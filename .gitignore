@@ -34,3 +34,4 @@ google-services.json
 
 # Flutter
 pubspec.lock
+.dart_tool/flutter_build/
