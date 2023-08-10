@@ -5,7 +5,7 @@ class BorderInputType extends StatelessWidget {
     super.key,
     required this.title,
     required this.hint,
-    required this.maxLength,
+    this.maxLength,
   });
 
   final int? maxLength;

@@ -3,6 +3,8 @@ class AppString {
 
   AppString._init();
 
+  final String appName = "Valbury";
+
   final String hintEmail = "Enter your email";
   final String hintPhoneNumber = "Enter your phone number";
 

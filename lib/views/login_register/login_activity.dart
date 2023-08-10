@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valbury_coding_test/res/values/strings.dart';
+import 'package:valbury_coding_test/utils/routes/routes_name.dart';
 import 'package:valbury_coding_test/views/custom_views/border_input_type.dart';
 
 class LoginActivity extends StatefulWidget {
@@ -60,7 +61,7 @@ class _LoginActivityState extends State<LoginActivity> {
 
   void _loginMandatory() {
     if (_formLoginKey.currentState!.validate()) {
-      // TODO: Navigate to HomeActivity
+      Navigator.of(context).pushReplacementNamed(RouteName.home);
     }
   }
 }

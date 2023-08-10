@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valbury_coding_test/utils/routes/routes_name.dart';
+import 'package:valbury_coding_test/views/home/home_activity.dart';
 import 'package:valbury_coding_test/views/login_register/login_activity.dart';
 
 class Routes {
@@ -11,7 +12,7 @@ class Routes {
         );
       case RouteName.home:
         return MaterialPageRoute(
-            builder: (BuildContext context) => const LoginActivity()
+            builder: (BuildContext context) => const HomeActivity()
         );
       default:
         return MaterialPageRoute(builder: (_) {
