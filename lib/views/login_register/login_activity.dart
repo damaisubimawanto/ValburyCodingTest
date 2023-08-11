@@ -32,17 +32,22 @@ class _LoginActivityState extends State<LoginActivity> {
             BorderInputType(
               title: AppString.instance.textEmail,
               hint: AppString.instance.hintEmail,
-              maxLength: 10,
+              inputType: TextInputType.emailAddress,
+              isDigitOnly: false,
+              isEmailValidation: true,
             ),
             const SizedBox(height: 10.0),
             BorderInputType(
               title: AppString.instance.textPhoneNumber,
               hint: AppString.instance.hintPhoneNumber,
+              inputType: TextInputType.phone,
+              isDigitOnly: true,
+              isEmailValidation: false,
               maxLength: 10,
             ),
             const SizedBox(height: 10.0),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
               child: ElevatedButton(
                 onPressed: () {
                   _loginMandatory();

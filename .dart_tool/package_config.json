@@ -254,6 +254,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "validators",
+      "rootUri": "file:///C:/Users/damai007/AppData/Local/Pub/Cache/hosted/pub.dev/validators-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///C:/Users/damai007/AppData/Local/Pub/Cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -278,7 +284,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-08-11T08:04:39.634424Z",
+  "generated": "2023-08-11T16:21:19.359599Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

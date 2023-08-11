@@ -23,4 +23,5 @@ class AppString {
 
   final String errorCannotBeEmpty = "Cannot be empty!";
   final String errorNoPageDefined = "No page defined!";
+  final String errorEmailInvalid = "Email format is invalid!";
 }
