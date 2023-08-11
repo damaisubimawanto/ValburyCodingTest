@@ -36,7 +36,7 @@ class CustomAppBarHome extends StatelessWidget {
                 flex: 1,
                 child: Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.only(bottom: 8, top: 8),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   decoration: BoxDecoration(
                     border: Border.all(
                       width: 1,
@@ -55,7 +55,7 @@ class CustomAppBarHome extends StatelessWidget {
                 flex: 1,
                 child: Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.only(bottom: 8, top: 8),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   decoration: const BoxDecoration(
                       border: BorderDirectional(
                         bottom: BorderSide(

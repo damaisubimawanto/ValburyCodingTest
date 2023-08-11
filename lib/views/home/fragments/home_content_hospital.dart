@@ -16,52 +16,83 @@ class HomeContentHospital extends StatelessWidget {
   Widget build(BuildContext context) {
     debugPrint("HomeContentHospital => build() => title = ${model.title}");
     return Column(
-      children: [
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
         Row(
           children: [
-            Flexible(
-              child: Text(model.title.orEmpty())
+            Expanded(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Text(model.title.orEmpty())
+              )
             ),
-            const Text('Lihat Semua')
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: const Text('Lihat Semua')
+            )
           ],
         ),
-        ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: model.filterList?.length.orZero(),
-          itemBuilder: (BuildContext context, int position) {
-            FilterModel filterModel = model.filterList![position];
-            return Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(16))
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-              child: Text(filterModel.name.orEmpty()),
-            );
-          },
+        SizedBox(
+          height: 20,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: model.filterList?.length.orZero(),
+            itemBuilder: (BuildContext context, int position) {
+              FilterModel filterModel = model.filterList![position];
+              return Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(16))
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                child: Text(filterModel.name.orEmpty()),
+              );
+            },
+          ),
         ),
-        ListView.builder(
-          itemCount: model.hospitalList?.length.orZero(),
-          itemBuilder: (BuildContext context, int position) {
-            HospitalModel hospitalModel = model.hospitalList![position];
-            return Row(
-              children: [
-                SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: Image.network(hospitalModel.thumbnail.orEmpty()),
-                ),
-                const SizedBox(width: 8),
-                Column(
-                  children: [
-                    Text(hospitalModel.name.orEmpty()),
-                    Text(hospitalModel.address.orEmpty()),
-                  ],
-                ),
-                const Text('Lihat Detail')
-              ],
-            );
-          }
-        )
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: model.hospitalList?.length.orZero(),
+              itemBuilder: (BuildContext context, int position) {
+                HospitalModel hospitalModel = model.hospitalList![position];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 64,
+                        height: 64,
+                        child: Image.network(
+                          hospitalModel.thumbnail.orEmpty(),
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              hospitalModel.name.orEmpty(),
+                              textAlign: TextAlign.start,
+                            ),
+                            const SizedBox(height: 4),
+                            Text(hospitalModel.address.orEmpty()),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      const Text('Lihat Detail')
+                    ],
+                  ),
+                );
+              }
+          ),
+        ),
       ],
     );
   }
