@@ -28,13 +28,24 @@ class HomeContentHospital extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Text(model.title.orEmpty())
+                padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 0.0),
+                child: Text(
+                  model.title.orEmpty(),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold
+                  ),
+                )
               )
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: const Text('Lihat Semua')
+              padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 0.0),
+              child: TextButton(
+                onPressed: () {
+                  // TODO: Open RS or KLINIK bottom navigation menu
+                },
+                child: const Text('Lihat Semua')
+              )
             )
           ],
         ),
@@ -48,11 +59,11 @@ class HomeContentHospital extends StatelessWidget {
 
               return Row(
                 children: [
-                  SizedBox(width: position == 0 ? 10 : 5),
+                  SizedBox(width: position == 0 ? 10.0 : 5.0),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(16))
+                          borderRadius: BorderRadius.all(Radius.circular(16.0))
                       ),
                     ),
                     onPressed: () {
@@ -63,7 +74,7 @@ class HomeContentHospital extends StatelessWidget {
                     child: Text(filterModel.name.orEmpty())
                   ),
                   SizedBox(
-                    width: position == (filterCount.orZero() - 1) ? 10 : 5
+                    width: position == (filterCount.orZero() - 1) ? 10.0 : 5.0
                   )
                 ],
               );
@@ -71,7 +82,7 @@ class HomeContentHospital extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 16.0),
           child: ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -99,14 +110,32 @@ class HomeContentHospital extends StatelessWidget {
                           Text(
                             hospitalModel.name.orEmpty(),
                             textAlign: TextAlign.start,
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                           const SizedBox(height: 4),
-                          Text(hospitalModel.address.orEmpty()),
+                          Text(
+                            hospitalModel.address.orEmpty(),
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w300
+                            ),
+                          ),
                         ],
                       ),
                     ),
                     const SizedBox(width: 16),
-                    const Text('Lihat Detail')
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero
+                      ),
+                      onPressed: () {
+                        // TODO: Open hospital detail page
+                      },
+                      child: const Text('Lihat Detail')
+                    )
                   ],
                 ),
               );
