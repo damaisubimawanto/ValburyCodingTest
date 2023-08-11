@@ -1,12 +1,12 @@
 import 'filter_model.dart';
 
-class HospitalListModel {
+class HospitalSectionModel {
   String? title;
   List<FilterModel>? filterList;
   List<HospitalModel>? hospitalList;
 
   /* Constructor */
-  HospitalListModel({
+  HospitalSectionModel({
     this.title,
     this.filterList,
     this.hospitalList

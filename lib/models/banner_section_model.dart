@@ -1,8 +1,8 @@
-class BannerListModel {
+class BannerSectionModel {
   List<BannerModel>? bannerList;
 
   /* Constructor */
-  BannerListModel({
+  BannerSectionModel({
     this.bannerList
   });
 }
