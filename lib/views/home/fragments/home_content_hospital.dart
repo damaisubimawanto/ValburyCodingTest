@@ -15,6 +15,8 @@ class HomeContentHospital extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint("HomeContentHospital => build() => title = ${model.title}");
+    int? filterCount = model.filterList?.length;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -34,18 +36,31 @@ class HomeContentHospital extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 20,
+          height: 30,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: model.filterList?.length.orZero(),
+            itemCount: filterCount,
             itemBuilder: (BuildContext context, int position) {
               FilterModel filterModel = model.filterList![position];
-              return Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(16))
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                child: Text(filterModel.name.orEmpty()),
+
+              return Row(
+                children: [
+                  SizedBox(width: position == 0 ? 10 : 5),
+                  OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(16))
+                        ),
+                      ),
+                      onPressed: () {
+
+                      },
+                      child: Text(filterModel.name.orEmpty())
+                  ),
+                  SizedBox(
+                      width: position == (filterCount.orZero() - 1) ? 10 : 5
+                  )
+                ],
               );
             },
           ),

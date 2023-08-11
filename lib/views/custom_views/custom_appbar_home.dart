@@ -7,6 +7,11 @@ class CustomAppBarHome extends StatelessWidget {
     super.key,
   });
 
+  final _borderSide = const BorderSide(
+    color: Colors.black54,
+    width: 1
+  );
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -56,20 +61,11 @@ class CustomAppBarHome extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 8),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                       border: BorderDirectional(
-                        bottom: BorderSide(
-                          color: Colors.black54,
-                          width: 1
-                        ),
-                        end: BorderSide(
-                          color: Colors.black54,
-                          width: 1
-                        ),
-                        top: BorderSide(
-                          color: Colors.black54,
-                          width: 1
-                        ),
+                        bottom: _borderSide,
+                        end: _borderSide,
+                        top: _borderSide,
                       )
                   ),
                   child: const Text(
