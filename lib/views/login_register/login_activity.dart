@@ -28,27 +28,27 @@ class _LoginActivityState extends State<LoginActivity> {
         key: _formLoginKey,
         child: Column(
           children: [
-            const SizedBox(height: 40),
+            const SizedBox(height: 40.0),
             BorderInputType(
               title: AppString.instance.textEmail,
               hint: AppString.instance.hintEmail,
               maxLength: 10,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 10.0),
             BorderInputType(
               title: AppString.instance.textPhoneNumber,
               hint: AppString.instance.hintPhoneNumber,
               maxLength: 10,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 10.0),
             Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
               child: ElevatedButton(
                 onPressed: () {
                   _loginMandatory();
                 },
                 style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(50)
+                    minimumSize: const Size.fromHeight(50.0)
                 ),
                 child: Text(AppString.instance.textSubmit),
               ),

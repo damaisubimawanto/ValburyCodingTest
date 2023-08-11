@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valbury_coding_test/models/hospital_section_model.dart';
+import 'package:valbury_coding_test/res/values/strings.dart';
 import 'package:valbury_coding_test/utils/extensions/integer_extensions.dart';
 import 'package:valbury_coding_test/utils/extensions/string_extensions.dart';
 import '../../../models/filter_model.dart';
@@ -32,7 +33,7 @@ class HomeContentHospital extends StatelessWidget {
                 child: Text(
                   model.title.orEmpty(),
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.0,
                     fontWeight: FontWeight.bold
                   ),
                 )
@@ -44,7 +45,7 @@ class HomeContentHospital extends StatelessWidget {
                 onPressed: () {
                   // TODO: Open RS or KLINIK bottom navigation menu
                 },
-                child: const Text('Lihat Semua')
+                child: Text(AppString.instance.textShowAll)
               )
             )
           ],
@@ -90,19 +91,19 @@ class HomeContentHospital extends StatelessWidget {
             itemBuilder: (BuildContext context, int position) {
               HospitalModel hospitalModel = model.hospitalList![position];
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: 64,
-                      height: 64,
+                      width: 64.0,
+                      height: 64.0,
                       child: Image.network(
                         hospitalModel.thumbnail.orEmpty(),
                         fit: BoxFit.fitWidth,
                       ),
                     ),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 16.0),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +116,7 @@ class HomeContentHospital extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          const SizedBox(height: 4),
+                          const SizedBox(height: 4.0),
                           Text(
                             hospitalModel.address.orEmpty(),
                             style: const TextStyle(
@@ -126,7 +127,7 @@ class HomeContentHospital extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 16.0),
                     TextButton(
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero
@@ -134,7 +135,7 @@ class HomeContentHospital extends StatelessWidget {
                       onPressed: () {
                         // TODO: Open hospital detail page
                       },
-                      child: const Text('Lihat Detail')
+                      child: Text(AppString.instance.textShowDetail)
                     )
                   ],
                 ),

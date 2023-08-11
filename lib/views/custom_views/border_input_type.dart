@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valbury_coding_test/res/values/strings.dart';
 
 class BorderInputType extends StatelessWidget {
   const BorderInputType({
@@ -29,7 +30,7 @@ class BorderInputType extends StatelessWidget {
             maxLength: maxLength,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return "Cannot be empty";
+                return AppString.instance.errorCannotBeEmpty;
               }
               return null;
             },

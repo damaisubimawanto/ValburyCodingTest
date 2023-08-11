@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valbury_coding_test/res/values/strings.dart';
 import 'package:valbury_coding_test/views/home/fragments/home_fragment.dart';
 import '../../view_models/home_view_model.dart';
 import '../custom_views/custom_appbar_home.dart';
@@ -56,38 +57,44 @@ class _HomeActivityState extends State<HomeActivity> {
         fragment = const Center(child: Text('Profile - Under Development!'));
         break;
       default:
-        fragment = const Center(child: Text('No page defined!'));
+        fragment = Center(child: Text(AppString.instance.errorNoPageDefined));
     }
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 115,
+        toolbarHeight: 115.0,
         title: const CustomAppBarHome(),
         titleSpacing: 0.0,
       ),
       body: fragment,
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home'
+            icon: const Icon(Icons.home),
+            label: AppString.instance.bottomMenuHome
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.local_hospital_rounded),
-            label: 'RS'
+            icon: const Icon(Icons.local_hospital_rounded),
+            label: AppString.instance.bottomMenuHospital
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.medical_information_rounded),
-            label: 'Klinik'
+            icon: const Icon(Icons.medical_information_rounded),
+            label: AppString.instance.bottomMenuClinic
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_rounded),
-            label: 'Profile'
+            icon: const Icon(Icons.account_circle_rounded),
+            label: AppString.instance.bottomMenuProfile
           )
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w500
+        ),
         unselectedItemColor: Colors.black54,
+        unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.normal
+        ),
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
