@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valbury_coding_test/views/home/fragments/home_fragment.dart';
+import '../../view_models/home_view_model.dart';
 import '../custom_views/custom_appbar_home.dart';
 
 class HomeActivity extends StatefulWidget {
@@ -11,13 +12,20 @@ class HomeActivity extends StatefulWidget {
 
 class _HomeActivityState extends State<HomeActivity> {
   int _selectedIndex = 0;
+  HomeViewModel homeViewModel = HomeViewModel();
+
+  @override
+  void initState() {
+    homeViewModel.fetchHomeDummyList();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     Widget fragment;
     switch (_selectedIndex) {
       case 0:
-        fragment = const HomeFragment();
+        fragment = HomeFragment(homeViewModel: homeViewModel);
         break;
       case 1:
         fragment = const Center(child: Text('RS - Under Development!'));
