@@ -13,7 +13,7 @@ class HomeFragment extends StatelessWidget {
   });
 
   final HomeViewModel homeViewModel;
-  final Function(int) filterClicked;
+  final Function(int filterId, int sectionId) filterClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +31,7 @@ class HomeFragment extends StatelessWidget {
                 return const SizedBox();
               } else {
                 return HomeContentHospital(
+                  sectionId: homeModel.hospitalSectionModel!.id!,
                   model: homeModel.hospitalSectionModel!,
                   filterClicked: filterClicked,
                 );

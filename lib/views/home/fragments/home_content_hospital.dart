@@ -7,12 +7,14 @@ import '../../../models/filter_model.dart';
 class HomeContentHospital extends StatelessWidget {
   const HomeContentHospital({
     super.key,
+    required this.sectionId,
     required this.model,
     required this.filterClicked
   });
 
+  final int sectionId;
   final HospitalSectionModel model;
-  final Function(int) filterClicked;
+  final Function(int filterId, int sectionId) filterClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class HomeContentHospital extends StatelessWidget {
                     ),
                     onPressed: () {
                       if (filterModel.id != null) {
-                        filterClicked(filterModel.id!);
+                        filterClicked(filterModel.id!, sectionId);
                       }
                     },
                     child: Text(filterModel.name.orEmpty())

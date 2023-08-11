@@ -18,8 +18,17 @@ class _HomeActivityState extends State<HomeActivity> {
     await homeViewModel.fetchHomeDummyList();
   }
   
-  _loadDummyDataByFilter(int filterId) async {
-    await homeViewModel.fetchHospitalFilterById(filterId);
+  _loadDummyDataByFilter(int filterId, int sectionId) async {
+    switch (sectionId) {
+      case 100:
+        await homeViewModel.fetchHospitalFilterById(filterId);
+        break;
+      case 103:
+        await homeViewModel.fetchClinicFilterById(filterId);
+        break;
+      default:
+        debugPrint("No section found!");
+    }
   }
 
   @override
@@ -30,9 +39,9 @@ class _HomeActivityState extends State<HomeActivity> {
       case 0:
         fragment = HomeFragment(
           homeViewModel: homeViewModel,
-          filterClicked: (filterId) {
+          filterClicked: (filterId, sectionId) {
             setState(() {
-              _loadDummyDataByFilter(filterId);
+              _loadDummyDataByFilter(filterId, sectionId);
             });
           },
         );

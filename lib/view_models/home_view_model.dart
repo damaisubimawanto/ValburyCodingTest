@@ -29,6 +29,14 @@ class HomeViewModel with ChangeNotifier {
     );
     homeListModel.add(bannerHomeModel);
 
+    /* Fetch clinic section dummy data. */
+    dynamic clinicDummyData = jsonDecode(DummyJson.instance.clinicAll);
+    HomeModel clinicHomeModel = HomeModel(
+      hospitalSectionModel: HospitalSectionModel.fromJson(clinicDummyData),
+      homeTypes: HomeTypes.clinic
+    );
+    homeListModel.add(clinicHomeModel);
+
     notifyListeners();
   }
 
@@ -70,6 +78,32 @@ class HomeViewModel with ChangeNotifier {
     }
   }
 
+  Future fetchClinicFilterById(int id) async {
+    HomeTypes homeTypes = HomeTypes.clinic;
+    switch (id) {
+      case 0:
+        _fetchHospitalDummyData(
+            DummyJson.instance.clinicAll,
+            homeTypes
+        );
+        break;
+      case 1:
+        _fetchHospitalDummyData(
+            DummyJson.instance.clinicBpjs,
+            homeTypes
+        );
+        break;
+      case 2:
+        _fetchHospitalDummyData(
+            DummyJson.instance.clinicPartner,
+            homeTypes
+        );
+        break;
+      default:
+        debugPrint("Invalid filter ID");
+    }
+  }
+
   void _fetchHospitalDummyData(
     String dummyJson,
     HomeTypes homeTypes
@@ -77,7 +111,7 @@ class HomeViewModel with ChangeNotifier {
     dynamic hospitalDummyData = jsonDecode(dummyJson);
     HomeModel hospitalHomeModel = HomeModel(
         hospitalSectionModel: HospitalSectionModel.fromJson(hospitalDummyData),
-        homeTypes: HomeTypes.hospital
+        homeTypes: homeTypes
     );
     int index = _getPositionFromModel(homeTypes);
     if (index > -1) {
