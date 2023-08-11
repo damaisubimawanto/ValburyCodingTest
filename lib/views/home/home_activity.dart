@@ -42,10 +42,9 @@ class _HomeActivityState extends State<HomeActivity> {
 
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          color: Colors.white,
-          child: const CustomAppBarHome(),
-        ),
+        toolbarHeight: 115,
+        title: const CustomAppBarHome(),
+        titleSpacing: 0.0,
       ),
       body: fragment,
       bottomNavigationBar: BottomNavigationBar(

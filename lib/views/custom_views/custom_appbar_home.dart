@@ -9,37 +9,81 @@ class CustomAppBarHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            const Icon(Icons.account_circle_rounded),
-            Text(AppString.instance.appName)
-          ],
-        ),
-        Row(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1,
-                  color: Colors.black54
-                )
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Image.asset(
+                'assets/images/ic_launcher_circle.png',
+                width: 48,
+                height: 48,
+                fit: BoxFit.fitWidth,
               ),
-              child: const Text('Label 1'),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  border: Border.all(
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(AppString.instance.appName)
+              ),
+              const Icon(Icons.more_vert_outlined)
+            ],
+          ),
+          const SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.only(bottom: 8, top: 8),
+                  decoration: BoxDecoration(
+                    border: Border.all(
                       width: 1,
                       color: Colors.black54
-                  )
+                    )
+                  ),
+                  child: const Text(
+                    'Label 1',
+                    style: TextStyle(
+                      fontSize: 14
+                    ),
+                  ),
+                ),
               ),
-              child: const Text('Label 2'),
-            )
-          ],
-        )
-      ],
+              Expanded(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.only(bottom: 8, top: 8),
+                  decoration: const BoxDecoration(
+                      border: BorderDirectional(
+                        bottom: BorderSide(
+                          color: Colors.black54,
+                          width: 1
+                        ),
+                        end: BorderSide(
+                          color: Colors.black54,
+                          width: 1
+                        ),
+                        top: BorderSide(
+                          color: Colors.black54,
+                          width: 1
+                        ),
+                      )
+                  ),
+                  child: const Text(
+                    'Label 2',
+                    style: TextStyle(
+                      fontSize: 14
+                    ),
+                  ),
+                ),
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }
