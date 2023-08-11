@@ -7,10 +7,12 @@ import '../../../models/filter_model.dart';
 class HomeContentHospital extends StatelessWidget {
   const HomeContentHospital({
     super.key,
-    required this.model
+    required this.model,
+    required this.filterClicked
   });
 
   final HospitalSectionModel model;
+  final Function(int) filterClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -46,18 +48,20 @@ class HomeContentHospital extends StatelessWidget {
                 children: [
                   SizedBox(width: position == 0 ? 10 : 5),
                   OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(16))
-                        ),
+                    style: OutlinedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(16))
                       ),
-                      onPressed: () {
-
-                      },
-                      child: Text(filterModel.name.orEmpty())
+                    ),
+                    onPressed: () {
+                      if (filterModel.id != null) {
+                        filterClicked(filterModel.id!);
+                      }
+                    },
+                    child: Text(filterModel.name.orEmpty())
                   ),
                   SizedBox(
-                      width: position == (filterCount.orZero() - 1) ? 10 : 5
+                    width: position == (filterCount.orZero() - 1) ? 10 : 5
                   )
                 ],
               );

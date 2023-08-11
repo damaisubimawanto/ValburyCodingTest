@@ -9,7 +9,8 @@ import 'package:valbury_coding_test/utils/home_types.dart';
 class HomeViewModel with ChangeNotifier {
   var homeListModel = <HomeModel>[];
 
-  void fetchHomeDummyList() {
+  Future fetchHomeDummyList() async {
+    if (homeListModel.isNotEmpty) return;
     dynamic hospitalDummyData = jsonDecode(DummyJson.instance.hospitalAll);
     HomeModel hospitalHomeModel = HomeModel(
       hospitalSectionModel: HospitalSectionModel.fromJson(hospitalDummyData),
@@ -20,7 +21,7 @@ class HomeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void fetchHospitalFilterById(int id) {
+  Future fetchHospitalFilterById(int id) async {
     switch (id) {
       case 0:
         _fetchHospitalDummyData(DummyJson.instance.hospitalAll);

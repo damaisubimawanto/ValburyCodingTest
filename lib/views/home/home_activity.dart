@@ -14,18 +14,28 @@ class _HomeActivityState extends State<HomeActivity> {
   int _selectedIndex = 0;
   HomeViewModel homeViewModel = HomeViewModel();
 
-  @override
-  void initState() {
-    homeViewModel.fetchHomeDummyList();
-    super.initState();
+  _loadFirstDummyData() async {
+    await homeViewModel.fetchHomeDummyList();
+  }
+  
+  _loadDummyDataByFilter(int filterId) async {
+    await homeViewModel.fetchHospitalFilterById(filterId);
   }
 
   @override
   Widget build(BuildContext context) {
+    _loadFirstDummyData();
     Widget fragment;
     switch (_selectedIndex) {
       case 0:
-        fragment = HomeFragment(homeViewModel: homeViewModel);
+        fragment = HomeFragment(
+          homeViewModel: homeViewModel,
+          filterClicked: (filterId) {
+            setState(() {
+              _loadDummyDataByFilter(filterId);
+            });
+          },
+        );
         break;
       case 1:
         fragment = const Center(child: Text('RS - Under Development!'));

@@ -7,10 +7,12 @@ import '../../../utils/home_types.dart';
 class HomeFragment extends StatelessWidget {
   const HomeFragment({
     super.key,
-    required this.homeViewModel
+    required this.homeViewModel,
+    required this.filterClicked
   });
 
   final HomeViewModel homeViewModel;
+  final Function(int) filterClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,8 @@ class HomeFragment extends StatelessWidget {
                 return const SizedBox();
               } else {
                 return HomeContentHospital(
-                  model: homeModel.hospitalSectionModel!
+                  model: homeModel.hospitalSectionModel!,
+                  filterClicked: filterClicked,
                 );
               }
             case HomeTypes.banner:
