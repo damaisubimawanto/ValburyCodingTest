@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:valbury_coding_test/models/home_model.dart';
 import 'package:valbury_coding_test/view_models/home_view_model.dart';
+import 'package:valbury_coding_test/views/home/fragments/home_content_banner.dart';
 import 'package:valbury_coding_test/views/home/fragments/home_content_hospital.dart';
 import '../../../utils/home_types.dart';
 
@@ -24,7 +25,7 @@ class HomeFragment extends StatelessWidget {
           HomeModel homeModel = homeViewModel.homeListModel[position];
 
           switch (homeModel.homeTypes) {
-            case HomeTypes.clinic: /* Clinic will be the sama as hospital. */
+            case HomeTypes.clinic: /* Clinic will be the same as hospital. */
             case HomeTypes.hospital:
               if (homeModel.isHospitalSectionInvalid()) {
                 return const SizedBox();
@@ -38,8 +39,9 @@ class HomeFragment extends StatelessWidget {
               if (homeModel.isBannerSectionInvalid()) {
                 return const SizedBox();
               } else {
-                // TODO: Make item list for banner type
-                return const SizedBox();
+                return HomeContentBanner(
+                  model: homeModel.bannerSectionModel!,
+                );
               }
             default:
               return const SizedBox();
