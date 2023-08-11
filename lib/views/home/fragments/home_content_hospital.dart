@@ -14,7 +14,6 @@ class HomeContentHospital extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("HomeContentHospital => build() => title = ${model.title}");
     int? filterCount = model.filterList?.length;
 
     return Column(
@@ -68,44 +67,44 @@ class HomeContentHospital extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16),
           child: ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: model.hospitalList?.length.orZero(),
-              itemBuilder: (BuildContext context, int position) {
-                HospitalModel hospitalModel = model.hospitalList![position];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 64,
-                        height: 64,
-                        child: Image.network(
-                          hospitalModel.thumbnail.orEmpty(),
-                          fit: BoxFit.fitWidth,
-                        ),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: model.hospitalList?.length.orZero(),
+            itemBuilder: (BuildContext context, int position) {
+              HospitalModel hospitalModel = model.hospitalList![position];
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 64,
+                      height: 64,
+                      child: Image.network(
+                        hospitalModel.thumbnail.orEmpty(),
+                        fit: BoxFit.fitWidth,
                       ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              hospitalModel.name.orEmpty(),
-                              textAlign: TextAlign.start,
-                            ),
-                            const SizedBox(height: 4),
-                            Text(hospitalModel.address.orEmpty()),
-                          ],
-                        ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            hospitalModel.name.orEmpty(),
+                            textAlign: TextAlign.start,
+                          ),
+                          const SizedBox(height: 4),
+                          Text(hospitalModel.address.orEmpty()),
+                        ],
                       ),
-                      const SizedBox(width: 16),
-                      const Text('Lihat Detail')
-                    ],
-                  ),
-                );
-              }
+                    ),
+                    const SizedBox(width: 16),
+                    const Text('Lihat Detail')
+                  ],
+                ),
+              );
+            }
           ),
         ),
       ],

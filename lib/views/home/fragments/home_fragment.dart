@@ -14,17 +14,15 @@ class HomeFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("HomeFragment => build() => home list model length = ${homeViewModel.homeListModel.length}");
     return SizedBox(
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: homeViewModel.homeListModel.length,
         itemBuilder: (BuildContext context, int position) {
           HomeModel homeModel = homeViewModel.homeListModel[position];
-          debugPrint("HomeFragment => build() => ListView.builder() => home types = ${homeModel.homeTypes}, is hospital section invalid = ${homeModel.isHospitalSectionInvalid()}");
 
           switch (homeModel.homeTypes) {
-            case HomeTypes.clinic: /* Clinic will be the sama as hospital .*/
+            case HomeTypes.clinic: /* Clinic will be the sama as hospital. */
             case HomeTypes.hospital:
               if (homeModel.isHospitalSectionInvalid()) {
                 return const SizedBox();
