@@ -50,7 +50,7 @@ class _LoginActivityState extends State<LoginActivity> {
               padding: const EdgeInsets.only(left: 16.0, right: 16.0),
               child: ElevatedButton(
                 onPressed: () {
-                  _loginMandatory();
+                  _loginMandatory(context);
                 },
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(50.0)
@@ -64,8 +64,32 @@ class _LoginActivityState extends State<LoginActivity> {
     );
   }
 
-  void _loginMandatory() {
+  void _loginMandatory(BuildContext context) async {
     if (_formLoginKey.currentState!.validate()) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (_) {
+          return const Dialog(
+            backgroundColor: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator()
+                ],
+              ),
+            ),
+          );
+        }
+      );
+
+      await Future.delayed(const Duration(seconds: 3));
+
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pop();
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacementNamed(RouteName.home);
     }
   }
