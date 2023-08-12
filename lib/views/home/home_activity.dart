@@ -32,8 +32,17 @@ class _HomeActivityState extends State<HomeActivity> {
     }
   }
 
-  _toggleHospitalChipFilter(int filterId) async {
-    await homeViewModel.toggleHospitalChipFilter(filterId);
+  _toggleHospitalChipFilter(int filterId, int sectionId) async {
+    switch (sectionId) {
+      case 100:
+        await homeViewModel.toggleHospitalChipFilter(filterId);
+        break;
+      case 103:
+        await homeViewModel.toggleClinicChipFilter(filterId);
+        break;
+      default:
+        debugPrint("No section found!");
+    }
   }
 
   @override
@@ -47,7 +56,7 @@ class _HomeActivityState extends State<HomeActivity> {
           filterClicked: (filterId, sectionId) {
             setState(() {
               _loadDummyDataByFilter(filterId, sectionId);
-              _toggleHospitalChipFilter(filterId);
+              _toggleHospitalChipFilter(filterId, sectionId);
             });
           },
         );

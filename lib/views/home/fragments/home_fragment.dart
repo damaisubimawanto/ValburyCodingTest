@@ -25,7 +25,18 @@ class HomeFragment extends StatelessWidget {
           HomeModel homeModel = homeViewModel.homeListModel[position];
 
           switch (homeModel.homeTypes) {
-            case HomeTypes.clinic: /* Clinic will be the same as hospital. */
+            case HomeTypes.clinic:
+              if (homeModel.isHospitalSectionInvalid()) {
+                return const SizedBox();
+              } else {
+                return HomeContentHospital(
+                  sectionId: homeModel.hospitalSectionModel!.id!,
+                  selectedFilterId: homeViewModel.selectedClinicFilterId,
+                  model: homeModel.hospitalSectionModel!,
+                  filterClicked: filterClicked,
+                );
+              }
+
             case HomeTypes.hospital:
               if (homeModel.isHospitalSectionInvalid()) {
                 return const SizedBox();
@@ -37,6 +48,7 @@ class HomeFragment extends StatelessWidget {
                   filterClicked: filterClicked,
                 );
               }
+
             case HomeTypes.banner:
               if (homeModel.isBannerSectionInvalid()) {
                 return const SizedBox();
@@ -45,6 +57,7 @@ class HomeFragment extends StatelessWidget {
                   model: homeModel.bannerSectionModel!,
                 );
               }
+
             default:
               return const SizedBox();
           }

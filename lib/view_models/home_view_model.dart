@@ -10,6 +10,7 @@ import 'package:valbury_coding_test/utils/home_types.dart';
 class HomeViewModel with ChangeNotifier {
   var homeListModel = <HomeModel>[];
   var selectedHospitalFilterId = 0;
+  var selectedClinicFilterId = 0;
 
   Future fetchHomeDummyList() async {
     if (homeListModel.isNotEmpty) return;
@@ -107,6 +108,11 @@ class HomeViewModel with ChangeNotifier {
 
   Future toggleHospitalChipFilter(int filterId) async {
     selectedHospitalFilterId = filterId;
+    notifyListeners();
+  }
+
+  Future toggleClinicChipFilter(int filterId) async {
+    selectedClinicFilterId = filterId;
     notifyListeners();
   }
 
