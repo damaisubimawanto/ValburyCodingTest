@@ -9,11 +9,13 @@ class HomeContentHospital extends StatelessWidget {
   const HomeContentHospital({
     super.key,
     required this.sectionId,
+    required this.selectedFilterId,
     required this.model,
     required this.filterClicked
   });
 
   final int sectionId;
+  final int selectedFilterId;
   final HospitalSectionModel model;
   final Function(int filterId, int sectionId) filterClicked;
 
@@ -57,6 +59,14 @@ class HomeContentHospital extends StatelessWidget {
             itemCount: filterCount,
             itemBuilder: (BuildContext context, int position) {
               FilterModel filterModel = model.filterList![position];
+              var chipColor = Colors.white;
+              var textColor = Colors.white;
+              if (filterModel.id == selectedFilterId) {
+                chipColor = Colors.lightBlue[200]!;
+                textColor = Colors.white;
+              } else {
+                textColor = Colors.blue;
+              }
 
               return Row(
                 children: [
@@ -66,13 +76,19 @@ class HomeContentHospital extends StatelessWidget {
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16.0))
                       ),
+                      backgroundColor: chipColor
                     ),
                     onPressed: () {
                       if (filterModel.id != null) {
                         filterClicked(filterModel.id!, sectionId);
                       }
                     },
-                    child: Text(filterModel.name.orEmpty())
+                    child: Text(
+                      filterModel.name.orEmpty(),
+                      style: TextStyle(
+                        color: textColor
+                      ),
+                    )
                   ),
                   SizedBox(
                     width: position == (filterCount.orZero() - 1) ? 10.0 : 5.0

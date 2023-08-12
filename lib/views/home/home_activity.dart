@@ -32,6 +32,10 @@ class _HomeActivityState extends State<HomeActivity> {
     }
   }
 
+  _toggleHospitalChipFilter(int filterId) async {
+    await homeViewModel.toggleHospitalChipFilter(filterId);
+  }
+
   @override
   Widget build(BuildContext context) {
     _loadFirstDummyData();
@@ -43,6 +47,7 @@ class _HomeActivityState extends State<HomeActivity> {
           filterClicked: (filterId, sectionId) {
             setState(() {
               _loadDummyDataByFilter(filterId, sectionId);
+              _toggleHospitalChipFilter(filterId);
             });
           },
         );

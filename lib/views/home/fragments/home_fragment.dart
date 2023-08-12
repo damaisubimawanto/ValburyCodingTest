@@ -32,6 +32,7 @@ class HomeFragment extends StatelessWidget {
               } else {
                 return HomeContentHospital(
                   sectionId: homeModel.hospitalSectionModel!.id!,
+                  selectedFilterId: homeViewModel.selectedHospitalFilterId,
                   model: homeModel.hospitalSectionModel!,
                   filterClicked: filterClicked,
                 );
